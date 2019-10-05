@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    <div class="card">
+    <table class="table mb-0">
+      <thead>
+        <tr>
+          <th>Quiz</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for taken_quiz in taken_list %}
+          <tr>
+            <td>{{ taken_quiz.user }}</td>
+            <td>{{ taken_quiz.score }}/{{ taken_quiz.quiz.question_set.count }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td class="bg-light text-center font-italic" colspan="3">Anyone hasn't completed this quiz yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
